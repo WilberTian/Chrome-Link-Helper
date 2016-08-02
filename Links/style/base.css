@@ -23,7 +23,10 @@ body {
 
 .link-item {
   display: block;
-  font-size: 24px;
+  font-size: 16px;
   text-decoration: none;
-  padding: 10px;
+  padding: 5px;
+  word-break: break-all;
+  border-left: 2px solid #F44336;
+  margin: 5px;
 }
