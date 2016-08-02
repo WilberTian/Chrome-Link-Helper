@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Links</title>
+  <link rel="stylesheet" href="style/base.css">
+</head>
+
+<body>
+  <div class="content">
+    <div class="new-link-item-container">
+      <form>
+        <fieldset>
+          <legend>Link to add:</legend>
+          <input type="text" id="new-link-item-title" placeholder="title..."/><br> 
+          <input type="text" id="new-link-item-link" placeholder="link..."/><br> 
+          <input type="button" id="save-link-item-btn" value="Save"></input>
+        </fieldset>
+      </form>
+    </div>
+    <div class="link-item-list-container">
+      <div id="link-item-list">
+      </div>
+    </div>
+  </div>
+  <script src="js/pouchdb-3.2.0.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

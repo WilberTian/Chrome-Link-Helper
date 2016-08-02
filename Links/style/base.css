@@ -1,0 +1,29 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+.content {
+  margin: 0 auto;
+  width: 500px;
+  position: relative;
+  background: aliceblue;
+}
+
+.new-link-item-container, .link-item-list-container {
+  padding: 10px;
+}
+
+.new-link-item-container input[type=text] {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.link-item {
+  display: block;
+  font-size: 24px;
+  text-decoration: none;
+  padding: 10px;
+}
