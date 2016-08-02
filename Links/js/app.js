@@ -39,7 +39,7 @@
     function createLinkListItem(linkItem) {
         var linkItemEle = document.createElement('a');
         linkItemEle.className = 'link-item';
-        linkItemEle.appendChild(document.createTextNode(linkItem.link));
+        linkItemEle.appendChild(document.createTextNode(linkItem.title));
         linkItemEle.href = linkItem.link;
 
         return linkItemEle;
