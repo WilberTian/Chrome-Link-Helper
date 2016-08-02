@@ -58,7 +58,15 @@
         saveLinkItemBtn.addEventListener('click', addLinkItem, false);
     }
 
-    addEventListeners();
-    showLinks();
+    window.onload = function() {
+        addEventListeners();
+        showLinks();
+
+        chrome.tabs.getSelected(null, function(tab) {
+            document.getElementById('new-link-item-title').value = tab.title;
+            document.getElementById('new-link-item-link').value = tab.url;
+        });
+    }
+    
 
 })();

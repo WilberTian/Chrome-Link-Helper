@@ -11,5 +11,5 @@
    "default_popup": "index.html",
    "default_title": "Links"
   },
-  "permissions": []
+  "permissions": ["tabs"]
 }
