@@ -4,6 +4,12 @@ body {
   padding: 0;
 }
 
+input[type=button] {
+  border: none;
+  padding: 4px;
+  margin: 2px;
+  cursor: pointer;
+}
 
 .content {
   margin: 0 auto;
@@ -12,21 +18,33 @@ body {
   background: aliceblue;
 }
 
-.new-link-item-container, .link-item-list-container {
+#new-link-item-container, #edit-link-item-container, .link-item-list-container {
   padding: 10px;
 }
 
-.new-link-item-container input[type=text] {
+#new-link-item-container input[type=text], #edit-link-item-container input[type=text] {
   width: 100%;
   margin-bottom: 5px;
 }
 
+#new-link-item-container {
+  display: none;
+}
+
+#edit-link-item-container {
+  display: none;
+}
+
 .link-item {
-  display: block;
+  border-left: 2px solid #F44336;
+  margin: 5px;
+}
+
+.link-item a {
+  display: inline-block;
+  width: 380px;
   font-size: 16px;
   text-decoration: none;
   padding: 5px;
   word-break: break-all;
-  border-left: 2px solid #F44336;
-  margin: 5px;
 }

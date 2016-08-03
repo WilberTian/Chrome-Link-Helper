@@ -9,13 +9,25 @@
 
 <body>
   <div class="content">
-    <div class="new-link-item-container">
+    <div id="new-link-item-container">
       <form>
         <fieldset>
           <legend>Link to add:</legend>
           <input type="text" id="new-link-item-title" placeholder="title..."/><br> 
           <input type="text" id="new-link-item-link" placeholder="link..."/><br> 
+          <input type="button" id="add-link-item-btn" value="Add"></input>
+          <input type="button" id="cancel-add-link-item-btn" value="Cancel"></input>
+        </fieldset>
+      </form>
+    </div>
+    <div id="edit-link-item-container">
+      <form>
+        <fieldset>
+          <legend>Link to save:</legend>
+          <input type="text" id="edit-link-item-title" placeholder="title..."/><br> 
+          <input type="text" id="edit-link-item-link" placeholder="link..."/><br> 
           <input type="button" id="save-link-item-btn" value="Save"></input>
+          <input type="button" id="cancel-edit-link-item-btn" value="Cancel"></input>
         </fieldset>
       </form>
     </div>
