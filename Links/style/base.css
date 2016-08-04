@@ -11,6 +11,10 @@ input[type=button] {
   cursor: pointer;
 }
 
+input[type=text] {
+  box-sizing: border-box;
+}
+
 .content {
   margin: 0 auto;
   width: 500px;
@@ -25,6 +29,15 @@ input[type=button] {
 #new-link-item-container input[type=text], #edit-link-item-container input[type=text] {
   width: 100%;
   margin-bottom: 5px;
+}
+
+#search-box-container {
+  padding: 10px;
+}
+
+#search-box {
+  width: 100%;
+  padding: 6px;
 }
 
 #new-link-item-container {

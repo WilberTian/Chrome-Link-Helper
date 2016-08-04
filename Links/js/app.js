@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
     'use strict';
 
@@ -7,11 +7,11 @@
     var db = new PouchDB('links');
 
     var selectedLinkItem = {};
-  
+
     db.changes({
         since: 'now',
         live: true
-    }).on('change', showLinks);
+    }).on('change', searchLinkList);
 
     function addLinkItem() {
         var linkItem = {
@@ -26,7 +26,7 @@
 
             document.getElementById('new-link-item-container').style.display = 'none';
             console.log('Successfully add a link !');
-        }).catch(function(err) {
+        }).catch(function (err) {
             console.log(err);
         });
     }
@@ -40,9 +40,9 @@
             document.getElementById('edit-link-item-link').value = '';
 
             document.getElementById('edit-link-item-container').style.display = 'none';
-            
+
             console.log('Successfully save a link !');
-        }).catch(function(err) {
+        }).catch(function (err) {
             console.log(err);
         });
     }
@@ -57,17 +57,9 @@
     }
 
     function deleteLinkItem(linkItem) {
-        db.remove(linkItem).then(function(doc) {
+        db.remove(linkItem).then(function (doc) {
             console.log('Successfully removed a link !');
-        }).catch(function(err) {
-            console.log(err);
-        });
-    }
-
-    function showLinks() {
-        db.allDocs({include_docs: true, descending: true}).then(function(doc) {
-            renderLinkList(doc.rows);
-        }).catch(function(err) {
+        }).catch(function (err) {
             console.log(err);
         });
     }
@@ -101,29 +93,46 @@
     function renderLinkList(linkItems) {
         var div = document.getElementById('link-item-list');
         div.innerHTML = '';
-        linkItems.forEach(function(linkItem) {
+        linkItems.forEach(function (linkItem) {
             div.appendChild(createLinkListItem(linkItem.doc));
         });
+    }
+
+    function searchLinkList() {
+        function map(doc) {
+            if(doc.title.indexOf(document.getElementById('search-box').value) > -1) {
+                emit(doc._id);
+            }
+        }
+
+        db.query(map, {include_docs : true}).then(function (result) {
+           renderLinkList(result.rows);
+        }).catch(function (err) {
+            console.log(err);
+        });
+
     }
 
     function addEventListeners() {
         var addLinkItemBtn = document.getElementById('add-link-item-btn');
         addLinkItemBtn.addEventListener('click', addLinkItem, false);
 
-         document.getElementById('save-link-item-btn').addEventListener('click', saveLinkItem, false)
+        document.getElementById('save-link-item-btn').addEventListener('click', saveLinkItem, false)
+
+        document.getElementById('search-box').addEventListener('keyup', searchLinkList, false);
     }
 
-    window.onload = function() {
+    window.onload = function () {
         addEventListeners();
-        showLinks();
+        searchLinkList();
 
-        chrome.tabs.getSelected(null, function(tab) {
+        chrome.tabs.getSelected(null, function (tab) {
             document.getElementById('new-link-item-title').value = tab.title;
             document.getElementById('new-link-item-link').value = tab.url;
         });
 
         document.getElementById('new-link-item-container').style.display = 'block';
     }
-    
+
 
 })();
