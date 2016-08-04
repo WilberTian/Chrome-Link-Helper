@@ -11,5 +11,6 @@
    "default_popup": "index.html",
    "default_title": "Links"
   },
-  "permissions": ["tabs"]
+  "permissions": ["tabs"],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
